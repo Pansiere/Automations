@@ -8,4 +8,4 @@ providers:
 
 target: _self
 
-background: /root/homepage/images/background.png
+background: /images/background.png
