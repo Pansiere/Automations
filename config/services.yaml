@@ -3,16 +3,46 @@
 # https://gethomepage.dev/latest/configs/services
 
 - Datacenter:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+    - Pansiere:
+        icon: proxmox.png
+        href: https://192.168.1.98:8006/
+        description: Servidor de infraestrutura
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
+
+    - pm.pansiere:
+        icon: proxmox.png
+        href: https:/10.0.0.1:8006/
+        description: Servidor Proxmox
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pm.pansiere.com/
 
 - Infraestrutura:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+    - PfSense:
+        icon: pfsense
+        href: https://192.168.1.98:8006/
+        description: Firewall/Roteador Virtual
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
+  
+    - Pi-hole:
+        icon: pi-hole.png
+        href: https://192.168.1.98:8006/
+        description: Servidor DHCP e DNS
+        ping: 10.1.1.1:80
+        siteMonitor: https://pihole.pansiere.cc/
 
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+    - Uptime-Kuma:
+        icon: uptime-kuma.png
+        href: https://192.168.1.98:8006/
+        description: Serviço de disponibilidade
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
+
+- Aplicações:
+    - openmediavault:
+        icon: openmediavault
+        href: http://10.0.0.10
+        description: Servidor de arquivos
+        ping: 10.0.0.10:80
+        siteMonitor: https:/omv.pansiere.cc
