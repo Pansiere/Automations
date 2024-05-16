@@ -6,6 +6,8 @@ providers:
   openweathermap: openweathermapapikey
   weatherapi: weatherapiapikey
 
+title: Home-Pansiere
 target: _self
-
 background: /images/background.png
+theme: dark
+color: stone
