@@ -12,9 +12,9 @@
 
     - pm.pansiere:
         icon: proxmox.png
-        href: https:/10.0.0.1:8006/
+        href: https://10.0.0.1:8006/
         description: Servidor Proxmox
-        ping: 192.168.1.98:8006
+        ping: 10.0.0.1:8006
         siteMonitor: https://pm.pansiere.com/
 
 - Infraestrutura:
