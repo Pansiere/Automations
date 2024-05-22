@@ -2,9 +2,10 @@
 
 cd ~/
 
-git clone https://github.com/pansiere/zshrc
+git clone https://github.com/Pansiere/Automations.git
 
-mv ~/zshrc/.tmux.conf ~/.tmux.conf
-rm -rf zshrc
+rm ~/.tmux.conf
+mv ~/Automations/zsh/.tmux.conf ~/.tmux.conf
+rm -rf Automations
 
 echo "Pansiere - Configuracao concluida. Reinicie o terminal para aplicar."
