@@ -37,8 +37,8 @@ alias ports='netstat -tulanp'
 alias top='btop --utf-force'
 alias G='apt install'
 alias rr='python3 ~/ranger/ranger.py'
-alias UPD="cd && git clone https://github.com/pansiere/zshrc && cd zshrc && chmod +x update.sh && ./update.sh && cd && source .zshrc"
-alias tmux-conf="cd && git clone https://github.com/pansiere/zshrc && cd zshrc && chmod +x tmux-conf.sh && ./tmux-conf.sh && cd"
+alias UPD="cd && git clone git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x update.sh && ./update.sh && cd && source .zshrc"
+alias tmux-conf="cd && git clone git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x tmux-conf.sh && ./tmux-conf.sh && cd"
 alias nn='ncdu' #Ncdu is a disk usage analyzer with an ncurses interface.
 #It is designed to find space hogs on a remote server where
 #you don_t have an entire graphical setup available,

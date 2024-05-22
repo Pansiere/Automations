@@ -23,4 +23,4 @@ rm .zshrc
 mv ~/Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations
 
-echo "Pansiere - Configuracao concluida. Reinicie o terminal para aplicar."
+echo "Pansiere - Configuracoes concluidas com sucesso. Reinicie o terminal para aplicar."
