@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd ~/
+rm Automations
 
 sudo apt install update -y
 sudo apt install sudo -y
