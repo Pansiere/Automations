@@ -8,6 +8,6 @@ providers:
 
 title: Home-Pansiere
 target: _self
-background: /images/wallpaper.jpg
+background: /images/background.png
 theme: dark
 color: stone
