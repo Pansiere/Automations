@@ -54,7 +54,7 @@
         ping: 10.0.0.10:80
         siteMonitor: https:/omv.pansiere.cc
 
-        - VSCode Server:
+    - VSCode Server:
         icon: vscode
         href: https://vscode.pansiere.com
         description: Servidor de arquivos
