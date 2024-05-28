@@ -40,6 +40,13 @@
         siteMonitor: https://pansiere.cc/
 
 - Aplicações:
+    - Wazuh:
+        icon: wazuh
+        href: https://wazuh.pansiere.com
+        description: Security, Information and Event Management
+        ping: 10.0.0.10:80
+        siteMonitor: https://wazuh.pansiere.com
+        
     - openmediavault:
         icon: openmediavault
         href: http://10.0.0.10
