@@ -17,7 +17,7 @@ y | bash -c "$(curl --fail --show-error --silent --location https://raw.githubus
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-git clone https://github.com/Pansiere/Automations.git #Setup das minhas alias
+cd ~/
 rm .zshrc
 mv ~/Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations

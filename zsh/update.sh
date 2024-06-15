@@ -2,8 +2,6 @@
 
 cd ~/
 
-git clone https://github.com/Pansiere/Automations.git
-
 rm .zshrc
 mv ~/Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations

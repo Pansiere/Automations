@@ -2,8 +2,6 @@
 
 cd ~/
 
-git clone https://github.com/Pansiere/Automations.git
-
 rm ~/.tmux.conf
 mv ~/Automations/zsh/.tmux.conf ~/.tmux.conf
 rm -rf Automations
