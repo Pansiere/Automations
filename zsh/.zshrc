@@ -39,6 +39,7 @@ alias G='apt install'
 alias rr='python3 ~/ranger/ranger.py'
 alias UPD="cd && git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x update.sh && ./update.sh && cd && c && source .zshrc"
 alias tmux-conf="cd && git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x tmux-conf.sh && ./tmux-conf.sh && cd"
+alias SSH="cd && git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x ssh.sh && ./ssh.sh"
 alias nn='ncdu' #Ncdu is a disk usage analyzer with an ncurses interface.
 #It is designed to find space hogs on a remote server where
 #you don_t have an entire graphical setup available,
