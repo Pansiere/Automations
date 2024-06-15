@@ -2,7 +2,7 @@
 
 cd ~/
 
-apt install update -y
+apt update
 apt install sudo -y
 apt install exa -y
 apt install vim -y
