@@ -28,7 +28,7 @@ for REPO_DIR in "$BASE_DIR"/*; do
             REMOTE=$(git rev-parse @{u})
             
             if [ "$LOCAL" != "$REMOTE" ]; then
-                echo "DETECTADO - Novas mudanças encontradas no repositório remoto em: $REPO_DIR"
+                echo "DETECTADO - Novas mudanças encontradas no repositório remoto."
                 echo "$REPO_DIR" >> "$UPDATE_FILE"
             else
                 echo "O repositório local está atualizado."
