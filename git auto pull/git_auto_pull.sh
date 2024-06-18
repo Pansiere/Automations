@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd -
+
 mv Automations/git\ auto\ pull/.git_check_updates.sh  .
 mv Automations/git\ auto\ pull/.git_pull.sh .
 chmod +x .git_check_updates.sh
