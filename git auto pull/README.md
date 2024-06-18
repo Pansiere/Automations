@@ -14,11 +14,13 @@ cd /tmp && git clone https://github.com/Pansiere/Automations.git && chmod +x Aut
 
 ## Dica de Alias para Configuração Inicial
 
-Para facilitar o processo de configuração inicial e adição de novos diretórios para verificação, você pode utilizar a seguinte alias em seu arquivo .bashrc ou .zshrc:
+Para facilitar o processo de configuração inicial e adição de novos diretórios para verificação, você pode utilizar a seguinte alias em seu arquivo `.bashrc` ou `.zshrc`:
 
 ```BASH
 alias GIT="cd /tmp && git clone https://github.com/Pansiere/Automations.git && chmod +x Automations/git\ auto\ pull/git_auto_pull.sh && cd - && /tmp/Automations/git\ auto\ pull/git_auto_pull.sh && c"
 ```
+
+Após adicionar essa linha ao seu arquivo de configuração do shell, execute `source ~/.bashrc` ou `source ~/.zshrc` para aplicar as mudanças. Com essa alias `GIT`, você pode clonar o repositório de automação, configurar os scripts necessários e realizar a configuração inicial com um único comando.
 
 ## Script 1: Configuração Inicial
 
@@ -157,4 +159,4 @@ fi
 
 ## Conclusão
 
-Esses scripts juntos proporcionam uma maneira automatizada de verificar e aplicar atualizações em múltiplos repositórios Git dentro de um diretório específico. Eles garantem que todos os repositórios estejam atualizados com as últimas mudanças do repositório remoto, economizando tempo e reduzindo o esforço manual. Além disso, as aliases C e P tornam o processo ainda mais eficiente e conveniente.
+Esses scripts juntos proporcionam uma maneira automatizada de verificar e aplicar atualizações em múltiplos repositórios Git dentro de um diretório específico. Eles garantem que todos os repositórios estejam atualizados com as últimas mudanças do repositório remoto, economizando tempo e reduzindo o esforço manual. Além disso, as aliases `C` e `P` tornam o processo ainda mais eficiente e conveniente. A alias `GIT` simplifica a adição de novos diretórios para verificação ao clonar o repositório de automação e configurar os scripts necessários com um único comando.
