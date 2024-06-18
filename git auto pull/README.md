@@ -50,7 +50,7 @@ alias C='./.git_check_updates.sh'
 alias P='./.git_pull.sh'
 ```
 
-Depois de adicionar essas linhas ao seu arquivo de configuração do shell, execute `source ~/.bashrc` ou `source ~/.zshrc` para aplicar as mudanças. Com essas aliases, você pode executar C para verificar por atualizações e P para realizar git pull nos repositórios com atualizações disponíveis.
+Depois de adicionar essas linhas ao seu arquivo de configuração do shell, execute `source ~/.bashrc` ou `source ~/.zshrc` para aplicar as mudanças. Com essas aliases, você pode executar `C` para verificar por atualizações e `P` para realizar git pull nos repositórios com atualizações disponíveis.
 
 ## Script 2: Verificação de Atualizações
 
