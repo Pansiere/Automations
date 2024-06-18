@@ -22,7 +22,7 @@ alias GIT="cd /tmp && git clone https://github.com/Pansiere/Automations.git && c
 
 Após adicionar essa linha ao seu arquivo de configuração do shell, execute `source ~/.bashrc` ou `source ~/.zshrc` para aplicar as mudanças. Com essa alias `GIT`, você pode clonar o repositório de automação, configurar os scripts necessários e realizar a configuração inicial com um único comando.
 
-## Script 1: Configuração Inicial
+## Script 1 (git_auto_pull.sh): Configuração Inicial
 
 ```BASH
 #!/bin/bash
@@ -54,7 +54,7 @@ alias P='./.git_pull.sh'
 
 Depois de adicionar essas linhas ao seu arquivo de configuração do shell, execute `source ~/.bashrc` ou `source ~/.zshrc` para aplicar as mudanças. Com essas aliases, você pode executar `C` para verificar por atualizações e `P` para realizar git pull nos repositórios com atualizações disponíveis.
 
-## Script 2: Verificação de Atualizações
+## Script 2 (.git_check_updates.sh): Verificação de Atualizações
 
 ```BASH
 #!/bin/bash
@@ -110,7 +110,7 @@ done
 - Compara a versão local com a remota.
 - Armazena no arquivo .available_pull os diretórios que têm atualizações disponíveis.
 
-## Script 3: Execução das Atualizações
+## Script 3 (.git_pull.sh): Execução das Atualizações
 
 ```BASH
 #!/bin/bash
