@@ -6,5 +6,4 @@ chmod +x .git_check_updates.sh
 chmod +x .git_pull.sh
 rm -rf /tmp/Automations
 
-
-echo "Configuracoes concluidas com sucesso. - #Pansiere -"
+echo "Configuracoes concluidas com sucesso. #Pansiere"
