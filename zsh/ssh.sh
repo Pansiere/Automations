@@ -8,8 +8,8 @@ if [ -f /tmp/ssh/authorized_keys ]; then
     mv /tmp/ssh/authorized_keys ~/.ssh/
 fi
 
-if [ -d /tpm/Automations ]; then
-    rm -rf /tpm/Automations
+if [ -d /tmp/Automations ]; then
+    rm -rf /tmp/Automations
 fi
 if [ -d /tmp/ssh ]; then
     rm -rf /tmp/ssh
