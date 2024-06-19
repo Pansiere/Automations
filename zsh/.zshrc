@@ -31,10 +31,30 @@ alias G='apt install'
 alias rr='python3 ~/ranger/ranger.py'
 alias C='./.git_check_updates.sh'
 alias P='./.git_pull.sh'
-alias UPD="cd /tmp && git clone https://github.com/Pansiere/Automations && chmod +x Automations/zsh/update.sh && cd - && /tmp/Automations/zsh/update.sh && source ~/.zshrc && c"
-alias GIT="cd /tmp && git clone https://github.com/Pansiere/Automations.git && chmod +x Automations/git\ auto\ pull/git_auto_pull.sh && cd - && /tmp/Automations/git\ auto\ pull/git_auto_pull.sh && c"
-alias TMUX="cd && git clone https://github.com/Pansiere/Automations.git && cd Automations/zsh/ && chmod +x tmux-conf.sh && ./tmux-conf.sh && cd"
-alias SSH="cd /tmp && git clone git@github.com:Pansiere/ssh.git && git clone https://github.com/Pansiere/Automations.git && chmod +x Automations/zsh/ssh.sh && cd - && /tmp/Automations/zsh/ssh.sh"
+alias UPD="cd /tmp && \
+git clone https://github.com/Pansiere/Automations && \
+chmod +x Automations/zsh/update.sh && \
+cd - && \
+/tmp/Automations/zsh/update.sh && \
+source ~/.zshrc && \
+c"
+alias GIT="cd /tmp && \
+git clone https://github.com/Pansiere/Automations.git && \
+chmod +x Automations/git\ auto\ pull/git_auto_pull.sh && \
+cd - && \
+/tmp/Automations/git\ auto\ pull/git_auto_pull.sh && \
+c"
+alias TMUX="cd && git clone https://github.com/Pansiere/Automations.git && \
+cd Automations/zsh/ && \ 
+chmod +x tmux-conf.sh && \
+./tmux-conf.sh && \
+cd -"
+alias SSH="cd /tmp && \
+git clone git@github.com:Pansiere/ssh.git && \
+git clone https://github.com/Pansiere/Automations.git && \
+chmod +x /tmp/Automations/zsh/ssh.sh && \
+cd - && \
+/tmp/Automations/zsh/ssh.sh"
 alias nn='ncdu' #Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a remote server where you don_t have an entire graphical setup available, but it is a useful tool even on regular desktop systems. Ncdu aims to be fast, simple and easy to use, and should be able to run in any minimal POSIX-like environment with ncurses installed.
 
 plugins=(git)
