@@ -51,7 +51,6 @@
     - PHP:
         icon: github.png
         href: https://github.com/pansiere/php
-        description: Servidor Proxmox
 
     - Others:
         icon: github.png
