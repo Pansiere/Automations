@@ -6,8 +6,7 @@ Configurações do meu homepage.
 
 ```BASH
 git clone https://github.com/pansiere/Automations && \
-cd Automations && \
-cd homepage && \
+cd Automations/homepage && \
 docker compose up -d
 ```
 
