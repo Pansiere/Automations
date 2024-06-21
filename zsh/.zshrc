@@ -2,6 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="crcandy"
 
+alias U="docker compose up -d"
+alias D="docker compose down"
 alias watch="watch -n1"
 alias S="tsh ls"
 alias s="tsh ssh"
