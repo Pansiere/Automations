@@ -25,6 +25,13 @@
         ping: 192.168.1.98:8006
         siteMonitor: https://pansiere.cc/
 
+    - Nginx Proxy Manager:
+        icon: nginx.png
+        href: https://proxy.pansiere.cc/
+        description: Firewall/Roteador Virtual
+        ping: https://proxy.pansiere.cc
+        siteMonitor: https://proxy.pansiere.cc/
+
     - Pi-hole:
         icon: pi-hole.png
         href: https://pihole.pansiere.cc/admin
