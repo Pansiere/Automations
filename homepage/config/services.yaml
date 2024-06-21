@@ -39,6 +39,38 @@
         ping: 192.168.1.98:8006
         siteMonitor: https://pansiere.cc/
 
+- Reposit  rios:
+    - Docker:
+        icon: github.png
+        href: https://github.com/pansiere/Docker
+        ping: github.com/
+        siteMonitor: github.com/
+
+    - PHP:
+        icon: github.png
+        href: https://github.com/pansiere/php
+        description: Servidor Proxmox
+        ping: github.com/pansiere/php
+        siteMonitor: github.com
+
+    - Automations:
+        icon: github.png
+        href: https://github.com/pansiere/Automations
+        ping: github.com/pansiere
+        siteMonitor: github.com/
+
+    - Others:
+        icon: github.png
+        href: https://github.com/pansiere/php
+        ping: github.com/pansiere/php
+        siteMonitor: github.com
+
+    - HTML:
+        icon: github.png
+        href: https://github.com/pansiere/others
+        ping: https://github.com
+        siteMonitor: github.com
+
 - Aplicações:
     - Wazuh:
         icon: wazuh
@@ -46,7 +78,7 @@
         description: Security, Information and Event Management
         ping: 10.0.0.10:80
         siteMonitor: https://wazuh.pansiere.com
-        
+
     - openmediavault:
         icon: openmediavault
         href: http://10.0.0.10
