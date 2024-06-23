@@ -67,19 +67,19 @@
         ping: 10.0.0.1:8006
         siteMonitor: https://pm.pansiere.com/
 
-    - Wazuh:
-        icon: wazuh
-        href: https://wazuh.pansiere.com
-        description: Security, Information and Event Management
-        ping: 10.0.0.10:80
-        siteMonitor: https://wazuh.pansiere.com
-
     - openmediavault:
         icon: openmediavault
         href: http://10.0.0.10
         description: Servidor de arquivos
         ping: 10.0.0.10:80
         siteMonitor: https:/omv.pansiere.cc
+
+    - Wazuh:
+        icon: wazuh
+        href: https://wazuh.pansiere.com
+        description: Security, Information and Event Management
+        ping: 10.0.0.10:80
+        siteMonitor: https://wazuh.pansiere.com
 
     - VSCode Server:
         icon: vscode
