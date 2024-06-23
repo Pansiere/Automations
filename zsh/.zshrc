@@ -1,7 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="crcandy"
-
+alias CP="C && P" 
 alias F="git add . && git commit -m "update" && git push"
 alias U="docker compose up -d"
 alias D="docker compose down"
