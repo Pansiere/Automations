@@ -2,7 +2,7 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
 
-- Datacenter:
+- Infraestrutura:
     - Pansiere:
         icon: proxmox.png
         href: https://192.168.1.98:8006/
@@ -10,14 +10,6 @@
         ping: 192.168.1.98:8006
         siteMonitor: https://pansiere.cc/
 
-    - pm.pansiere:
-        icon: proxmox.png
-        href: https://10.0.0.1:8006/
-        description: Servidor Proxmox
-        ping: 10.0.0.1:8006
-        siteMonitor: https://pm.pansiere.com/
-
-- Infraestrutura:
     - PfSense:
         icon: pfsense
         href: https://192.168.1.98:8006/
@@ -68,6 +60,13 @@
         href: https://github.com/pansiere/others
 
 - Aplicações:
+    - pm.pansiere:
+        icon: proxmox.png
+        href: https://10.0.0.1:8006/
+        description: Servidor Proxmox
+        ping: 10.0.0.1:8006
+        siteMonitor: https://pm.pansiere.com/
+
     - Wazuh:
         icon: wazuh
         href: https://wazuh.pansiere.com
