@@ -129,3 +129,42 @@
     syscall: 'write'
   }
 ]
+[2024-06-25T00:26:29.812Z] error: <httpProxy> Error calling https://wazuh.pansiere.com/...
+[2024-06-25T00:26:29.825Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at internalConnectMultiple (node:net:1173:5)
+      at Timeout.internalConnectMultipleTimeout (node:net:1632:3)
+      at listOnTimeout (node:internal/timers:571:11)
+      at process.processTimers (node:internal/timers:512:7) {
+    code: 'ENETUNREACH',
+    [errors]: [ [Error], [Error] ]
+  }
+]
+[2024-06-25T00:26:34.092Z] error: <httpProxy> Error calling https://wazuh.pansiere.com/...
+[2024-06-25T00:26:34.093Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at internalConnectMultiple (node:net:1173:5)
+      at Timeout.internalConnectMultipleTimeout (node:net:1632:3)
+      at listOnTimeout (node:internal/timers:571:11)
+      at process.processTimers (node:internal/timers:512:7) {
+    code: 'ENETUNREACH',
+    [errors]: [ [Error], [Error] ]
+  }
+]
+[2024-06-30T21:17:40.297Z] error: <httpProxy> Error calling https://pm.pansiere.com/...
+[2024-06-30T21:17:40.301Z] error: <httpProxy> [
+  500,
+  AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at internalConnectMultiple (node:net:1173:5)
+      at Timeout.internalConnectMultipleTimeout (node:net:1632:3)
+      at listOnTimeout (node:internal/timers:571:11)
+      at process.processTimers (node:internal/timers:512:7) {
+    code: 'ENETUNREACH',
+    [errors]: [ [Error], [Error] ]
+  }
+]
