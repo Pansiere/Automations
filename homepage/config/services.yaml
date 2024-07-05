@@ -38,7 +38,17 @@
         ping: 192.168.1.98:8006
         siteMonitor: https://pansiere.cc/
 
-- Reposit  rios:
+- Atalhos:
+    - MySQL - phpmyadmin:
+        icon: phpmyadmin.png
+        href: http://mysql.lan:8080
+
+    - Notion:
+        icon: notion.png
+        href: https://www.notion.so/
+
+
+- Repo:
     - Automations:
         icon: github.png
         href: https://github.com/pansiere/Automations
