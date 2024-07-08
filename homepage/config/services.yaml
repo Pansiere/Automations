@@ -41,12 +41,11 @@
 - Atalhos:
     - MySQL - phpmyadmin:
         icon: phpmyadmin.png
-        href: http://mysql.lan:8080
+        href: http://u22.lan:8080
 
     - Notion:
         icon: notion.png
         href: https://www.notion.so/
-
 
 - Repo:
     - Automations:
