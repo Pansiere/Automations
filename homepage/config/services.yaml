@@ -2,42 +2,6 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
 
-- Infraestrutura:
-    - Pansiere:
-        icon: proxmox.png
-        href: https://192.168.1.98:8006/
-        description: Servidor de infraestrutura
-        ping: 192.168.1.98:8006
-        siteMonitor: https://pansiere.cc/
-
-    - PfSense:
-        icon: pfsense
-        href: https://192.168.1.98:8006/
-        description: Firewall/Roteador Virtual
-        ping: 192.168.1.98:8006
-        siteMonitor: https://pansiere.cc/
-
-    - Proxy:
-        icon: nginx.png
-        href: https://proxy.pansiere.cc/
-        description: Nginx Proxy Manager
-        ping: https://proxy.pansiere.cc
-        siteMonitor: https://proxy.pansiere.cc/
-
-    - Pi-hole:
-        icon: pi-hole.png
-        href: https://pihole.pansiere.cc/admin
-        description: Servidor DHCP e DNS
-        ping: 10.1.1.1:80
-        siteMonitor: https://pihole.pansiere.cc/
-
-    - Uptime-Kuma:
-        icon: uptime-kuma.png
-        href: https://192.168.1.98:8006/
-        description: Serviço de disponibilidade
-        ping: 192.168.1.98:8006
-        siteMonitor: https://pansiere.cc/
-
 - Atalhos:
     - MySQL - phpmyadmin:
         icon: phpmyadmin.png
@@ -96,3 +60,39 @@
         description: Servidor de arquivos
         ping: https://vscode.pansiere.com
         siteMonitor: https://vscode.pansiere.com
+
+- Infraestrutura:
+    - Pansiere:
+        icon: proxmox.png
+        href: https://192.168.1.98:8006/
+        description: Servidor de infraestrutura
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
+
+    - PfSense:
+        icon: pfsense
+        href: https://192.168.1.98:8006/
+        description: Firewall/Roteador Virtual
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
+
+    - Proxy:
+        icon: nginx.png
+        href: https://proxy.pansiere.cc/
+        description: Nginx Proxy Manager
+        ping: https://proxy.pansiere.cc
+        siteMonitor: https://proxy.pansiere.cc/
+
+    - Pi-hole:
+        icon: pi-hole.png
+        href: https://pihole.pansiere.cc/admin
+        description: Servidor DHCP e DNS
+        ping: 10.1.1.1:80
+        siteMonitor: https://pihole.pansiere.cc/
+
+    - Uptime-Kuma:
+        icon: uptime-kuma.png
+        href: https://192.168.1.98:8006/
+        description: Serviço de disponibilidade
+        ping: 192.168.1.98:8006
+        siteMonitor: https://pansiere.cc/
