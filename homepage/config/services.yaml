@@ -2,6 +2,35 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
 
+- Aplicações:
+    - pm.pansiere:
+        icon: proxmox.png
+        href: https://10.0.0.1:8006/
+        description: Servidor Proxmox
+        ping: 10.0.0.1:8006
+        siteMonitor: https://pm.pansiere.com/
+
+    - openmediavault:
+        icon: openmediavault
+        href: http://10.0.0.10
+        description: Servidor de arquivos
+        ping: 10.0.0.10:80
+        siteMonitor: https:/omv.pansiere.cc
+
+    - Wazuh:
+        icon: wazuh
+        href: https://wazuh.pansiere.com
+        description: Security, Information and Event Management
+        ping: 10.0.0.10:80
+        siteMonitor: https://wazuh.pansiere.com
+
+    - VSCode Server:
+        icon: vscode
+        href: https://vscode.pansiere.com
+        description: Servidor de arquivos
+        ping: https://vscode.pansiere.com
+        siteMonitor: https://vscode.pansiere.com
+
 - Atalhos:
     - MySQL - phpmyadmin:
         icon: phpmyadmin.png
@@ -31,35 +60,6 @@
     - HTML:
         icon: github.png
         href: https://github.com/pansiere/others
-
-- Aplicações:
-    - pm.pansiere:
-        icon: proxmox.png
-        href: https://10.0.0.1:8006/
-        description: Servidor Proxmox
-        ping: 10.0.0.1:8006
-        siteMonitor: https://pm.pansiere.com/
-
-    - openmediavault:
-        icon: openmediavault
-        href: http://10.0.0.10
-        description: Servidor de arquivos
-        ping: 10.0.0.10:80
-        siteMonitor: https:/omv.pansiere.cc
-
-    - Wazuh:
-        icon: wazuh
-        href: https://wazuh.pansiere.com
-        description: Security, Information and Event Management
-        ping: 10.0.0.10:80
-        siteMonitor: https://wazuh.pansiere.com
-
-    - VSCode Server:
-        icon: vscode
-        href: https://vscode.pansiere.com
-        description: Servidor de arquivos
-        ping: https://vscode.pansiere.com
-        siteMonitor: https://vscode.pansiere.com
 
 - Infraestrutura:
     - Pansiere:
