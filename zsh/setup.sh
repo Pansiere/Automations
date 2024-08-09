@@ -22,7 +22,7 @@ git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZS
 
 cd ~/
 rm .zshrc
-mv /Automations/zsh/.zshrc ~/.zshrc
+mv ~/Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations
 
 echo "Pansiere - Configuracoes concluidas com sucesso. Reinicie o terminal para aplicar."
