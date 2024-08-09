@@ -19,7 +19,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 cd ~/
 rm .zshrc
-mv ~/Automations/zsh/.zshrc ~/.zshrc
+mv /Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations
 
 echo "Pansiere - Configuracoes concluidas com sucesso. Reinicie o terminal para aplicar."
