@@ -73,6 +73,7 @@ plugins=(
     fast-syntax-highlighting
     zsh-autocomplete
 )
+
 source $ZSH/oh-my-zsh.sh
 
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
