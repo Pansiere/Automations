@@ -66,9 +66,12 @@ chmod +x /tmp/Automations/zsh/ssh.sh && \
 cd - && \
 /tmp/Automations/zsh/ssh.sh"
 
-plugins=(git)
 plugins=(
-    zsh-autosuggestions
+git
+zsh-autosuggestions
+zsh-syntax-highlighting
+fast-syntax-highlighting
+zsh-autocomplete
 )
 source $ZSH/oh-my-zsh.sh
 
