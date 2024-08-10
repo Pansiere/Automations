@@ -4,7 +4,7 @@ cd ~/
 
 # Atualiza pacotes e instala programas necessários
 sudo apt update
-sudo apt install exa vim neofetch zsh curl git -y
+sudo apt install eza vim neofetch zsh curl git -y
 
 # Altera o shell padrão para Zsh (caso o zsh esteja instalado corretamente)
 if command -v zsh >/dev/null 2>&1; then
