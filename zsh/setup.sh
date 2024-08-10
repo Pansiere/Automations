@@ -3,22 +3,20 @@
 cd ~/
 
 # Atualiza pacotes e instala programas necessários
-sudo apt update
-sudo apt install eza vim neofetch zsh curl git -y
+apt install eza -y
+apt install vim -y
+apt install neofetch -y #programa necessário
+apt install zsh -y      #programa necessário
+apt install curl git -y #programa necessário
 
-# Altera o shell padrão para Zsh (caso o zsh esteja instalado corretamente)
-if command -v zsh >/dev/null 2>&1; then
-    sudo chsh -s $(which zsh) $(whoami)
-else
-    echo "Erro: zsh não foi instalado corretamente."
-    exit 1
-fi
+# Altera o shell padrão para Zsh
+chsh -s $(which zsh)
 
 # Instala o Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Instala o Zinit
-bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+y | bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 # Clona os plugins do Zsh
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
@@ -26,13 +24,13 @@ ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
 # Garante que o diretório de plugins exista
 mkdir -p $ZSH_CUSTOM
 
-# Função para clonar ou atualizar repositórios
+# Clona ou atualiza os repositórios
 clone_or_update() {
     local repo_url=$1
     local target_dir=$2
     
     if [ -d "$target_dir" ]; then
-        echo "Diretório $target_dir já existe, atualizando repositório."
+        echo "Directory $target_dir already exists, updating repository."
         cd "$target_dir" && git pull origin master
     else
         git clone "$repo_url" "$target_dir"
