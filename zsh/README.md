@@ -4,11 +4,12 @@
 
 ```bash
 apt update && \
+apt install sudo -y && \
 apt install git -y && \
 cd ~/ && \
 git clone https://github.com/Pansiere/Automations.git && \
 cd Automations/zsh && \
-chmod +x setup.sh && \
+sudo chmod +x setup.sh && \
 ./setup.sh && \
 cd
 ```

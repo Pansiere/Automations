@@ -3,13 +3,11 @@
 cd ~/
 
 # Atualiza pacotes e instala programas necessários
-apt update
-apt install sudo -y
 apt install exa -y
 apt install vim -y
-apt install neofetch -y
-apt install zsh -y
-apt install curl git -y
+apt install neofetch -y #programa necessário
+apt install zsh -y      #programa necessário
+apt install curl git -y #programa necessário
 
 # Altera o shell padrão para Zsh
 chsh -s $(which zsh)
@@ -50,4 +48,11 @@ rm -f .zshrc
 mv ~/Automations/zsh/.zshrc ~/.zshrc
 rm -rf Automations
 
-echo "Pansiere - Configurações concluídas com sucesso. Reinicie o terminal para aplicar."
+echo "====================================================="
+echo "======= Configurações concluídas com sucesso! ======="
+echo "====================================================="
+echo "========== Reinicie o terminal para aplicar ========="
+echo "====================================================="
+echo "====== Feito por João Pedro Vicente Pansiere ========"
+echo "================ Obrigado por usar! ================="
+echo "====================================================="
