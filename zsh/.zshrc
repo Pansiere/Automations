@@ -5,7 +5,7 @@ ZSH_THEME="crcandy"
 # ====================== INÍCIO DAS ALIAS ======================
 alias CC="C && P"
 alias F="git add . && git commit -m "update" && git push"
-alias secon="cd ~/SECON && U && cd -"
+alias secon="cd ~/SECON/docker && U && cd -"
 alias D="docker compose down"
 alias U="docker compose up -d"
 alias DD="D && U"
