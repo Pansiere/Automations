@@ -9,6 +9,7 @@ alias secon="cd ~/SECON/docker && U && cd -"
 alais lala="php artisan route:cache && php artisan config:cache && php artisan cache:clear && php artisan config:clear && php artisan route:list";
 alias D="docker compose down"
 alias U="docker compose up -d"
+alias UU="docker compose up -d --build"
 alias DD="D && U"
 alias DDD="docker ps -aq | xargs docker stop"
 alias watch="watch -n1"
