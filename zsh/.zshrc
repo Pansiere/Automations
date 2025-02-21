@@ -3,6 +3,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="crcandy"
 
 # ====================== INÍCIO DAS ALIAS ======================
+
+alias aaa="git diff --name-only master...HEAD"
 alias CC="C && P"
 alias F="git add . && git commit -m "update" && git push"
 alias secon="cd ~/SECON/docker && U && cd -"
