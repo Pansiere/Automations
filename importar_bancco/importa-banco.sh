@@ -73,7 +73,7 @@ docker exec -it php_ps bash -c "
 
 # Apagar o arquivo .gz e o arquivo reduzido
 echo "Limpando arquivos temporários..."
-rm "$SQL_FILE"
-rm "$reduced_file"
+# rm "$SQL_FILE"
+# rm "$reduced_file"
 
 echo "Processo concluído com sucesso!"
