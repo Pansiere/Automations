@@ -11,7 +11,7 @@ class ImportarDB
     {
         // Credenciais de login
         $email = 'joaopv@impactaweb.com.br';
-        $password = 'holyPaladin4.';
+        $password = '';
 
         // URLs dos endpoints
         $loginUrl = "https://idcap.org.br/superadmin";

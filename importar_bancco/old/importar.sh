@@ -7,7 +7,7 @@ echo -e "######## Script pra importação de DB ##########\n"
 # read -sp "Digite sua senha: " password
 # echo
 email="joaopv@impactaweb.com.br"
-password="123"
+password=""
 
 # Define a URL do endpoint
 url="https://idcap.org.br/superadmin"
