@@ -9,9 +9,6 @@ class ImportarDB
 {
     public function importar()
     {
-        echo "\n################## PROSELETA ##################\n";
-        echo "######## Script pra importação de DB ##########\n\n";
-
         // Credenciais de login
         $email = 'joaopv@impactaweb.com.br';
         $password = 'holyPaladin4.';
