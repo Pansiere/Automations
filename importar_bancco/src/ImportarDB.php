@@ -1,16 +1,29 @@
 <?php
 
-namespace ImportarBanco;
+namespace Importar;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 
 class ImportarDB
 {
+    /**
+     * Importa o banco de dados para o site IDCAP.
+     *
+     * Para funcionar, é necessário ter um arquivo .env com as variáveis de ambiente DB_HOST, DB_USER, DB_PASS e DB_NAME.
+     * O arquivo .env deve estar na pasta raiz do projeto.
+     *
+     * A execução desse script fará o login no site IDCAP com as credenciais informadas e, em seguida, fará uma requisição POST
+     * para o endpoint superadmin/painel/ com um JSON contendo os dados a serem importados.
+     *
+     * @return void
+     */
     public function importar()
     {
+        $this->obterCredenciais();
+
         // Credenciais de login
-        $email = 'joaopv@impactaweb.com.br';
+        $email = '';
         $password = '';
 
         // URLs dos endpoints
@@ -99,6 +112,58 @@ class ImportarDB
         }
     }
 
+    /**
+     * Lê o arquivo .env e define as variáveis de ambiente para posterior uso.
+     *
+     * @return array As credenciais de acesso ao banco de dados.
+     * Contém as chaves 'host', 'user', 'pass' e 'name'.
+     */
+    private function obterCredenciais(): array
+    {
+        //Fazer uma tratativa aqui, para caso o arquivo estiver vazio, ele pediar para que o usuario digite o email e senha
+
+        // Caminho para o arquivo .env
+        $envFile = __DIR__ . '/../.env';
+
+        // Verifica se o arquivo existe
+        if (file_exists($envFile)) {
+            // Lê o arquivo linha por linha
+            $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            foreach ($lines as $line) {
+                // Ignora comentários e linhas inválidas
+                if (str_starts_with($line, '#') || strpos($line, '=') === false) {
+                    continue;
+                }
+                // Divide a linha em chave e valor
+                list($key, $value) = explode('=', $line, 2);
+                $key = trim($key);
+                $value = trim($value);
+                // Define a variável de ambiente
+                putenv("$key=$value");
+            }
+        } else {
+            echo "Arquivo .env não encontrado.";
+        }
+
+        // Acessa as variáveis com getenv()
+        $email = getenv('EMAIL');
+        $password = getenv('PASSWORD');
+
+        if ($email && $password) {
+            echo "Alguma variável não foi definida.";
+        }
+
+        return [
+            'host' => $email,
+            'name' => $password
+        ];
+    }
+
+    /**
+     * Retorna os dados a serem enviados no POST para a rota 'superadmin/painel/'.
+     *
+     * @return array Os dados a serem enviados, contendo um array 'codigo' com os valores.
+     */
     private function getCodigoData()
     {
         // Dados a serem enviados no POST

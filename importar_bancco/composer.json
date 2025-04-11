@@ -1,10 +1,10 @@
 {
-    "name": "pansiere/importar_banco",
+    "name": "pansiere/importar",
     "description": "Script para importar DB",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "ImportarBanco\\": "src/"
+            "Importar\\": "src/"
         }
     },
     "authors": [
