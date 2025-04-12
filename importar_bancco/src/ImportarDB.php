@@ -2,7 +2,7 @@
 
 namespace Importar;
 
-use GuzzleHttp\{Client, HandlerStack, Cookie\CookieJar, Handler\CurlHandler, Exception\GuzzleException};
+use GuzzleHttp\{Client, Cookie\CookieJar, Exception\GuzzleException};
 
 class ImportarDB
 {
