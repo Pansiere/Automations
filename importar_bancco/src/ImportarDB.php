@@ -2,47 +2,38 @@
 
 namespace Importar;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
+use GuzzleHttp\{Client, HandlerStack, Cookie\CookieJar, Handler\CurlHandler, Exception\GuzzleException};
 
 class ImportarDB
 {
-    /**
-     * Importa o banco de dados para o site IDCAP.
-     *
-     * Para funcionar, é necessário ter um arquivo .env com as variáveis de ambiente DB_HOST, DB_USER, DB_PASS e DB_NAME.
-     * O arquivo .env deve estar na pasta raiz do projeto.
-     *
-     * A execução desse script fará o login no site IDCAP com as credenciais informadas e, em seguida, fará uma requisição POST
-     * para o endpoint superadmin/painel/ com um JSON contendo os dados a serem importados.
-     *
-     * @return void
-     */
     public function importar()
     {
-        $this->obterCredenciais();
-
-        // Credenciais de login
-        $email = '';
-        $password = '';
-
-        // URLs dos endpoints
-        $loginUrl = "https://idcap.org.br/superadmin";
-        $painelUrl = "https://idcap.org.br/superadmin/painel/";
-
-        // Configura o CookieJar para manter os cookies de sessão
-        $cookieJar = new CookieJar();
-        $client = new Client([
-            'cookies' => $cookieJar,
-        ]);
-
-        // 1. Faz a requisição GET para obter os cookies iniciais
         try {
-            $responseGet = $client->get($loginUrl);
-        } catch (\Exception $e) {
-            echo "Erro na requisição GET: " . $e->getMessage() . "\n";
-            exit(1);
+            $cookieJar = new CookieJar();
+
+            $client = new Client([
+                'timeout' => 15,
+                'verify' => false,
+                'cookies' => $cookieJar,
+                'allow_redirects' => true,
+            ]);
+
+            $response = $client->request('GET', 'https://idcap.org.br/superadmin');
+
+            echo "Status Code: " . $response->getStatusCode() . "\n";
+        } catch (GuzzleException $e) {
+            echo "Erro na requisição: " . $e->getMessage() . "\n";
+            exit();
         }
+
+        var_dump($response, 123, $cookieJar->toArray());
+
+        exit();
+        // 
+
+
+
+
 
         // 2. Extrai o XSRF-TOKEN dos cookies
         $xsrf_token = null;
@@ -58,6 +49,10 @@ class ImportarDB
             exit(1);
         }
 
+        // Credenciais de login
+        $this->obterCredenciaisLogin();
+        $email = getenv('EMAIL');
+        $password = getenv('PASSWORD');
         // 3. Realiza o login com uma requisição POST
         try {
             $responsePost = $client->post($loginUrl, [
@@ -85,6 +80,8 @@ class ImportarDB
 
             // 4. Faz a requisição POST para superadmin/painel/ com o JSON
             try {
+                $painelUrl = "https://idcap.org.br/superadmin/painel/";
+
                 $responsePainelPost = $client->post($painelUrl, [
                     'headers' => [
                         'Content-Type' => 'application/json',
@@ -113,19 +110,19 @@ class ImportarDB
     }
 
     /**
-     * Lê o arquivo .env e define as variáveis de ambiente para posterior uso.
+     * Carrega as credenciais de login a partir de um arquivo .env e as define como variáveis de ambiente.
      *
-     * @return array As credenciais de acesso ao banco de dados.
-     * Contém as chaves 'host', 'user', 'pass' e 'name'.
+     * O método verifica se o arquivo .env existe no diretório raiz do projeto. Se existir, lê o arquivo
+     * linha por linha, ignorando comentários e linhas inválidas, e define as variáveis de ambiente correspondentes.
+     * Caso as variáveis de ambiente 'EMAIL' e 'PASSWORD' não estejam definidas ou sejam inválidas, solicita
+     * ao usuário que insira manualmente essas informações.
+     *
+     * @return void
      */
-    private function obterCredenciais(): array
+    private function obterCredenciaisLogin(): void
     {
-        //Fazer uma tratativa aqui, para caso o arquivo estiver vazio, ele pediar para que o usuario digite o email e senha
-
-        // Caminho para o arquivo .env
         $envFile = __DIR__ . '/../.env';
 
-        // Verifica se o arquivo existe
         if (file_exists($envFile)) {
             // Lê o arquivo linha por linha
             $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -141,22 +138,18 @@ class ImportarDB
                 // Define a variável de ambiente
                 putenv("$key=$value");
             }
-        } else {
-            echo "Arquivo .env não encontrado.";
         }
 
-        // Acessa as variáveis com getenv()
-        $email = getenv('EMAIL');
-        $password = getenv('PASSWORD');
+        // Verifica se as variáveis de ambiente foram definidas
+        while (!getenv('EMAIL') || !getenv('PASSWORD')) {
+            echo "\nEMAIL ou SENHA não definidos no arquivo .env ou inválidos\n";
 
-        if ($email && $password) {
-            echo "Alguma variável não foi definida.";
+            echo "Digite seu email: ";
+            putenv("EMAIL=" . trim(fgets(STDIN)));
+
+            echo "Digite sua senha: ";
+            putenv("PASSWORD=" . trim(fgets(STDIN)));
         }
-
-        return [
-            'host' => $email,
-            'name' => $password
-        ];
     }
 
     /**
