@@ -19,8 +19,6 @@ class ImportarDB
                 'decode_content' => false
             ]);
 
-            // $response = $client->get('https://idcap.org.br/superadmin');
-
             $postResponse = $client->post(
                 'https://idcap.org.br/superadmin/api/auth/login',
                 [
@@ -30,7 +28,6 @@ class ImportarDB
                     ],
                 ]
             );
-
 
             echo "POST Status Code: " . $postResponse->getStatusCode() . "\n";
             echo "POST Response Body:\n" . $postResponse->getBody()->getContents() . "\n";
