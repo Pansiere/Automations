@@ -18,80 +18,97 @@ class ImportarDB
             'allow_redirects' => false
         ]);
 
-        // Faz a requisição GET para superadmin
+        // GET incial para superadmin
         try {
-            $response = $client->get('https://idcap.org.br/superadmin');
+            $response = $client->get('https://ps-adm-101.selecao.net.br/superadmin/auth/login');
+            echo "---- GET inicial para /superadmin ----\n";
+            echo "--------------- Sucesso --------------\n\n";
 
-            echo "\n--- Requisição GET inicial para superadmin ---\n";
-            echo "Status Code: " . $response->getStatusCode() . "\n";
+            echo "Status Code:\n";
+            echo $response->getStatusCode() . "\n\n";
 
-            $body = $response->getBody()->getContents();
-
-            // Tenta decodificar e reimprimir formatado
-            $json = json_decode($body, true); // true = array associativo
-            
-            if (json_last_error() === JSON_ERROR_NONE) {
-                echo "Body (JSON formatado):\n";
-                echo json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            } else {
-                echo "Body (não é JSON):\n" . $body;
-            }
+            $this->debugarResponse($response);
 
         } catch (GuzzleException $e) {
-            echo "\n--- Erro na requisição GET inicial para superadmin ---\n";
-
-            echo "\nErro na requisição: " . $e->getMessage() . "\n";
-            echo "\nErro na requisição: " . $e->getMessage() . "\n";
+            echo "--- GET inicial para /superadmin ---\n\n";
+            echo "--------------- Erro ---------------\n";
+            
+            echo "Erro:\n";
+            echo $e->getMessage();
 
             exit();
         }
 
-        exit();
-        // Faz a requisição POST para superadmin/api/auth/login
+        // POST para superadmin/api/auth/login
         try {
-            $cookieJar = new CookieJar();
-
-            $client = new Client([
-                'timeout' => 15,
-                'verify' => false,
-                'cookies' => $cookieJar,
-                'decode_content' => false,
-                'allow_redirects' => false
-            ]);
-
             $this->obterCredenciaisLogin();
 
-
-            $postResponse = $client->post(
-                'https://idcap.org.br/superadmin/api/auth/login',
+            $response = $client->post(
+                'https://ps-adm-101.selecao.net.br/superadmin/api/auth/login',
                 [
                     'form_params' => [
                         'email'    => getenv('EMAIL'),
                         'password' => getenv('PASSWORD')
-                    ],
+                    ]
                 ]
             );
-            echo "POST Status Code: " . $postResponse->getStatusCode() . "\n";
-            echo "POST Response Body:\n" . $postResponse->getBody()->getContents() . "\n";
+            echo "--- POST para /superadmin/api/auth/login ---\n";
+            echo "------------------ Sucesso -----------------\n\n";
 
-            echo "\n--- Conteúdo completo da resposta de erro ---\n";
-            $response = $client->get('https://idcap.org.br/superadmin');
-            echo "POST Status Code: " . $response->getStatusCode() . "\n";
-            echo "POST Response Body:\n" . $response->getBody()->getContents() . "\n";
+            echo "Status Code:\n";
+            echo $response->getStatusCode() . "\n\n";
 
-            // https://idcap.org.br/superadmin/api/auth/verificar2fa
+            $this->debugarResponse($response);
+
         } catch (GuzzleException $e) {
-            echo "\n--- Conteúdo completo da resposta de erro ---\n";
-            $response = $e->getResponse();
-            $body = $response->getBody()->getContents();
-            echo $body . "\n";
-            echo $e->getCode() . "\n";
+            echo "--- POST para /superadmin/api/auth/login ---\n";
+            echo "-------------------- Erro ------------------\n\n";
+
+            echo "Erro:\n";
             echo $e->getMessage() . "\n";
+
+            echo "Credenciais:\n";
+            echo 'Email: ' . getenv('EMAIL') . "\n";
+            echo 'Senha: ' . getenv('PASSWORD');
+
             exit();
         }
 
-        var_dump(getenv('EMAIL'));
-        var_dump(getenv('PASSWORD'));
+        // POST para superadmin/api/auth/verificar2fa
+        while (true) {
+            $codigo = $this->obterCodigo2fa();
+
+            try {
+                $response = $client->post(
+                    'https://ps-adm-101.selecao.net.br/superadmin/api/auth/verificar2fa',
+                    [
+                        'headers' => [
+                            'Authorization' => 'Token ' . $token,
+                            'Accept'        => 'application/json'
+                        ],
+                        'form_params' => ['codigo' => $codigo]
+                        // 'form_params' => ['codigo' => [1, 2, 3, 4, 5]]
+                    ]
+                );
+                echo "--- POST para /superadmin/superadmin/api/auth/verificar2fa ---\n";
+                echo "----------------------- Sucesso ----------------------\n\n";
+
+                echo "Status Code:\n";
+                echo $response->getStatusCode() . "\n\n";
+
+                $this->debugarResponse($response);
+
+            } catch (GuzzleException $e) {
+                echo "--- POST para /superadmin/superadmin/api/auth/verificar2fa ---\n";
+                echo "-------------------- Erro ------------------\n\n";
+
+                echo "Erro:\n";
+                echo $e->getMessage() . "\n";
+
+                exit();
+            }
+        }
+
         exit('rodou');
 
 
@@ -138,44 +155,22 @@ class ImportarDB
 
 
 
+    }
 
-        // Verifica o sucesso do login
-        $statusCode = $responsePost->getStatusCode();
-        echo "Status da requisição de login: $statusCode\n";
+    /**
+     * Debuga uma resposta, exibindo seu header e conteúdo no console.
+     *
+     * @param \GuzzleHttp\Psr7\Response $response A resposta a ser debugada.
+     */
+    private function debugarResponse($response): void
+    {
+        echo "Header:\n";
+        echo json_encode($response->getHeaders()) . "\n\n";
 
-        if ($statusCode === 200) {
-            echo "\nLogin realizado com sucesso!\n";
-
-            $codigoData = $this->getCodigoData();
-
-            // 4. Faz a requisição POST para superadmin/painel/ com o JSON
-            try {
-                $painelUrl = "https://idcap.org.br/superadmin/painel/";
-
-                $responsePainelPost = $client->post($painelUrl, [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'X-XSRF-TOKEN' => $xsrf_token, // Incluído caso o servidor exija
-                    ],
-                    'json' => $codigoData,
-                ]);
-
-                $statusPainelPost = $responsePainelPost->getStatusCode();
-                if ($statusPainelPost === 200 || $statusPainelPost === 201) {
-                    echo "POST para 'superadmin/painel/' bem-sucedido!\n";
-                    $conteudo = $responsePainelPost->getBody()->getContents();
-                    echo "Resposta do servidor:\n";
-                    echo $conteudo . "\n";
-                } else {
-                    echo "Erro ao fazer POST para 'superadmin/painel/'. Código HTTP: $statusPainelPost\n";
-                }
-            } catch (\Exception $e) {
-                echo "Erro ao fazer POST para 'superadmin/painel/': " . $e->getMessage() . "\n";
-            }
-        } else {
-            $body = $responsePost->getBody()->getContents();
-            echo "\nErro ao realizar o login. Código HTTP: $statusCode\n";
-            echo $body;
+        echo "Body:\n";
+        echo $response->getBody()->getContents() . "\n\n";
+        if (!empty(json_decode($response->getBody()->getContents())->token)) {
+            echo json_decode($response->getBody()->getContents())->token . "\n\n";
         }
     }
 
@@ -227,19 +222,15 @@ class ImportarDB
      *
      * @return array Os dados a serem enviados, contendo um array 'codigo' com os valores.
      */
-    private function getCodigoData()
+    private function obterCodigo2fa(): array
     {
-        // Dados a serem enviados no POST
-        $codigoData = [
-            'codigo' => [
-                "2",
-                "1",
-                "3",
-                "2",
-                "1",
-                "3"
-            ]
-        ];
+        // Preciso desenvolver uma função que pede os 6 numeros de uma vez só,
+        // e em seguinda pega cada numero e coloque um um indice, para retornar
+        // um array com os 6 indices e seus numeros...
+
+        die('Preciso desenvolver uma função que pede os 6 numeros de uma vez…');
+
+        $codigoData = [];
 
         return $codigoData;
     }
