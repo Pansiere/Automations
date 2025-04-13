@@ -22,14 +22,29 @@ class ImportarDB
         try {
             $response = $client->get('https://idcap.org.br/superadmin');
 
-            echo "\n--- Requisição GET para superadmin inicial ---\n";
+            echo "\n--- Requisição GET inicial para superadmin ---\n";
             echo "Status Code: " . $response->getStatusCode() . "\n";
+
+            $body = $response->getBody()->getContents();
+
+            // Tenta decodificar e reimprimir formatado
+            $json = json_decode($body, true); // true = array associativo
+            
+            if (json_last_error() === JSON_ERROR_NONE) {
+                echo "Body (JSON formatado):\n";
+                echo json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            } else {
+                echo "Body (não é JSON):\n" . $body;
+            }
+
         } catch (GuzzleException $e) {
-            echo "\n--- Erro na requisição GET para superadmin inicial ---\n";
+            echo "\n--- Erro na requisição GET inicial para superadmin ---\n";
+
             echo "\nErro na requisição: " . $e->getMessage() . "\n";
+            echo "\nErro na requisição: " . $e->getMessage() . "\n";
+
             exit();
         }
-
 
         exit();
         // Faz a requisição POST para superadmin/api/auth/login
