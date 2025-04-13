@@ -8,6 +8,31 @@ class ImportarDB
 {
     public function importar()
     {
+        $cookieJar = new CookieJar();
+
+        $client = new Client([
+            'timeout' => 15,
+            'verify' => false,
+            'cookies' => $cookieJar,
+            'decode_content' => false,
+            'allow_redirects' => false
+        ]);
+
+        // Faz a requisição GET para superadmin
+        try {
+            $response = $client->get('https://idcap.org.br/superadmin');
+
+            echo "\n--- Requisição GET para superadmin inicial ---\n";
+            echo "Status Code: " . $response->getStatusCode() . "\n";
+        } catch (GuzzleException $e) {
+            echo "\n--- Erro na requisição GET para superadmin inicial ---\n";
+            echo "\nErro na requisição: " . $e->getMessage() . "\n";
+            exit();
+        }
+
+
+        exit();
+        // Faz a requisição POST para superadmin/api/auth/login
         try {
             $cookieJar = new CookieJar();
 
@@ -15,30 +40,43 @@ class ImportarDB
                 'timeout' => 15,
                 'verify' => false,
                 'cookies' => $cookieJar,
-                'allow_redirects' => true,
-                'decode_content' => false
+                'decode_content' => false,
+                'allow_redirects' => false
             ]);
+
+            $this->obterCredenciaisLogin();
+
 
             $postResponse = $client->post(
                 'https://idcap.org.br/superadmin/api/auth/login',
                 [
                     'form_params' => [
-                        'email'    => 'teste@teste.com',
-                        'password' => '123123123',
+                        'email'    => getenv('EMAIL'),
+                        'password' => getenv('PASSWORD')
                     ],
                 ]
             );
-
             echo "POST Status Code: " . $postResponse->getStatusCode() . "\n";
             echo "POST Response Body:\n" . $postResponse->getBody()->getContents() . "\n";
+
+            echo "\n--- Conteúdo completo da resposta de erro ---\n";
+            $response = $client->get('https://idcap.org.br/superadmin');
+            echo "POST Status Code: " . $response->getStatusCode() . "\n";
+            echo "POST Response Body:\n" . $response->getBody()->getContents() . "\n";
+
+            // https://idcap.org.br/superadmin/api/auth/verificar2fa
         } catch (GuzzleException $e) {
             echo "\n--- Conteúdo completo da resposta de erro ---\n";
             $response = $e->getResponse();
             $body = $response->getBody()->getContents();
             echo $body . "\n";
+            echo $e->getCode() . "\n";
+            echo $e->getMessage() . "\n";
             exit();
         }
 
+        var_dump(getenv('EMAIL'));
+        var_dump(getenv('PASSWORD'));
         exit('rodou');
 
 
