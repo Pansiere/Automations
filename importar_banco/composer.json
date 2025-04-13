@@ -1,0 +1,19 @@
+{
+    "name": "pansiere/importar",
+    "description": "Script para importar DB",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Importar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Pedro V. Pansiere",
+            "email": "ojp027@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
