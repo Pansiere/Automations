@@ -16,58 +16,78 @@ class ImportarDB
                 'verify' => false,
                 'cookies' => $cookieJar,
                 'allow_redirects' => true,
+                'decode_content' => false
             ]);
 
-            $response = $client->request('GET', 'https://idcap.org.br/superadmin');
+            // $response = $client->get('https://idcap.org.br/superadmin');
 
-            echo "Status Code: " . $response->getStatusCode() . "\n";
+            $postResponse = $client->post(
+                'https://idcap.org.br/superadmin/api/auth/login',
+                [
+                    'form_params' => [
+                        'email'    => 'teste@teste.com',
+                        'password' => '123123123',
+                    ],
+                ]
+            );
+
+
+            echo "POST Status Code: " . $postResponse->getStatusCode() . "\n";
+            echo "POST Response Body:\n" . $postResponse->getBody()->getContents() . "\n";
         } catch (GuzzleException $e) {
-            echo "Erro na requisição: " . $e->getMessage() . "\n";
+            echo "\n--- Conteúdo completo da resposta de erro ---\n";
+            $response = $e->getResponse();
+            $body = $response->getBody()->getContents();
+            echo $body . "\n";
             exit();
         }
 
-        var_dump($response, 123, $cookieJar->toArray());
-
-        exit();
-        // 
+        exit('rodou');
 
 
 
 
 
-        // 2. Extrai o XSRF-TOKEN dos cookies
-        $xsrf_token = null;
-        foreach ($cookieJar->toArray() as $cookie) {
-            if ($cookie['Name'] === 'XSRF-TOKEN') {
-                $xsrf_token = $cookie['Value'];
-                break;
-            }
-        }
 
-        if (!$xsrf_token) {
-            echo "Não foi possível extrair o XSRF-TOKEN.\n";
-            exit(1);
-        }
 
-        // Credenciais de login
-        $this->obterCredenciaisLogin();
-        $email = getenv('EMAIL');
-        $password = getenv('PASSWORD');
-        // 3. Realiza o login com uma requisição POST
-        try {
-            $responsePost = $client->post($loginUrl, [
-                'headers' => [
-                    'X-XSRF-TOKEN' => $xsrf_token,
-                ],
-                'form_params' => [
-                    'email'    => $email,
-                    'password' => $password,
-                ],
-            ]);
-        } catch (\Exception $e) {
-            echo "Erro na requisição POST de login: " . $e->getMessage() . "\n";
-            exit(1);
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Verifica o sucesso do login
         $statusCode = $responsePost->getStatusCode();
