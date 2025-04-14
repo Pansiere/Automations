@@ -32,7 +32,7 @@ class ImportarDB
         } catch (GuzzleException $e) {
             echo "--- GET inicial para /superadmin ---\n\n";
             echo "--------------- Erro ---------------\n";
-            
+
             echo "Erro:\n";
             echo $e->getMessage();
 
@@ -109,7 +109,7 @@ class ImportarDB
 
                 if (strpos($errorMessage, '420 unknown status') !== false &&
                     strpos($errorMessage, 'código inválido') !== false) {
-        
+
                     // Solicita um novo código ao usuário
                     $codigo = $this->obterCodigo2fa();
                 } else {
@@ -122,7 +122,7 @@ class ImportarDB
         exit('rodou');
 
 
-
+	// GET https://ps-adm-101.selecao.net.br/superadmin/api/homologacao/servidores/options
 
 
 
