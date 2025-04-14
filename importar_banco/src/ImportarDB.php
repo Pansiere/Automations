@@ -73,6 +73,9 @@ class ImportarDB
             echo 'Email: ' . getenv('EMAIL') . "\n";
             echo 'Senha: ' . getenv('PASSWORD');
 
+            // Preciso fazer isso rodar...
+            $this->obterCredenciaisLogin(true);
+
             exit();
         }
 
@@ -191,7 +194,7 @@ class ImportarDB
      *
      * @return void
      */
-    private function obterCredenciaisLogin(): void
+    private function obterCredenciaisLogin($olicitar = false): void
     {
         $envFile = __DIR__ . '/../.env';
 
