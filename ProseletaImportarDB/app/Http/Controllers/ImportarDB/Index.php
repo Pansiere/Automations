@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ImportarDB;
 
 use App\Services\ImportarDBService;
+use App\Http\Controllers\Controller;
 use GuzzleHttp\{Client, Cookie\CookieJar, Exception\GuzzleException};
 
-class ImportarDB extends Controller
+class Index extends Controller
 {
     private ImportarDBService $service;
 
@@ -16,6 +17,8 @@ class ImportarDB extends Controller
 
     public function login()
     {
+        return view('importar-db');
+
         $cookieJar = new CookieJar();
 
         $client = new Client([
