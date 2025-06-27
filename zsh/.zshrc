@@ -6,9 +6,9 @@ ZSH_THEME="crcandy"
 
 alias aaa="git diff --name-only master...HEAD"
 alias CC="C && P"
-alias F="git add . && git commit -m "update" && git push"
+alias F="git add . && git commit -m "fast commit" && git push"
 alias secon="cd ~/SECON/docker && U && cd -"
-alais lala="php artisan route:cache && php artisan config:cache && php artisan cache:clear && php artisan config:clear && php artisan route:list";
+alias lala="php artisan route:cache && php artisan config:cache && php artisan cache:clear && php artisan config:clear && php artisan route:list";
 alias D="docker compose down"
 alias U="docker compose up -d"
 alias SECON="cd /home/joaopv/SECON/docker && D && cd && sudo rm -rf SECON && git clone git@github.com:Pansiere/SECON && cd /home/joaopv/SECON/docker && UU";
@@ -22,6 +22,7 @@ alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 alias wtr='curl wttr.in'
 alias span='ssh pansiere@66.228.61.207'
 alias sd12='ssh root@d12'
+alias dockerdev='docker run --rm -it ubuntu:latest /bin/bash'
 alias sdocker='ssh root@docker'
 alias skali='ssh root@kali'
 alias su22='ssh root@u22'
@@ -45,7 +46,7 @@ alias rr='python3 ~/ranger/ranger.py'
 alias C='./.git_check_updates.sh'
 alias P='./.git_pull.sh'
 
-alias nn='ncdu' # Ncdu is a disk usage analyzer with an ncurses interface. 
+alias nn='ncdu' # Ncdu is a disk usage analyzer with an ncurses interface.
                 # It is designed to find space hogs on a remote server where
                 # you don_t have an entire graphical setup available, but it
                 # is a useful tool even on regular desktop systems. Ncdu aims
@@ -68,7 +69,7 @@ cd - && \
 c"
 
 alias TMUX="cd && git clone https://github.com/Pansiere/Automations.git && \
-cd Automations/zsh/ && \ 
+cd Automations/zsh/ && \
 chmod +x tmux-conf.sh && \
 ./tmux-conf.sh && \
 cd -"
@@ -117,3 +118,5 @@ c
 neofetch
 
 i
+export PATH="/home/joaopv/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/joaopv/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
